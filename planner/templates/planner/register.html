@@ -1,101 +1,437 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
-    <title>Register</title>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    <style>
+<title>Register</title>
 
-        body{
-            margin:0;
-            padding:0;
-            font-family: Arial;
-            background: linear-gradient(to right, #11998e, #38ef7d);
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-        }
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-        .register-box{
-            background:white;
-            padding:40px;
-            width:350px;
-            border-radius:15px;
-            box-shadow:0px 0px 20px rgba(0,0,0,0.3);
-            text-align:center;
-        }
+<style>
 
-        h1{
-            margin-bottom:30px;
-            color:#11998e;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
-        input{
-            width:100%;
-            padding:12px;
-            margin-top:15px;
-            border:1px solid #ccc;
-            border-radius:8px;
-            font-size:16px;
-        }
+body{
 
-        button{
-            width:100%;
-            padding:12px;
-            margin-top:25px;
-            border:none;
-            border-radius:8px;
-            background:#11998e;
-            color:white;
-            font-size:18px;
-            cursor:pointer;
-        }
+    height:100vh;
 
-        button:hover{
-            background:#0b7d67;
-        }
+    display:flex;
 
-        a{
-            text-decoration:none;
-            color:green;
-        }
+    justify-content:center;
+    align-items:center;
 
-        p{
-            margin-top:20px;
-        }
+    background:linear-gradient(
+    135deg,
+    #1e0033,
+    #4b0082,
+    #7b2cbf
+    );
 
-    </style>
+    overflow:hidden;
+}
+
+/* BACKGROUND CIRCLES */
+
+body::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    border:4px solid rgba(255,255,255,0.08);
+
+    border-radius:50%;
+
+    top:-120px;
+    left:-120px;
+}
+
+body::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    border:4px solid rgba(255,255,255,0.08);
+
+    border-radius:50%;
+
+    bottom:-100px;
+    right:-100px;
+}
+
+/* REGISTER BOX */
+
+.register-box{
+
+    width:460px;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:22px;
+
+    box-shadow:
+    0 0 25px rgba(0,0,0,0.12);
+
+    position:relative;
+}
+
+/* CLOSE */
+
+.close{
+
+    position:absolute;
+
+    top:18px;
+    right:22px;
+
+    font-size:28px;
+
+    color:#888;
+
+    text-decoration:none;
+
+    font-weight:bold;
+}
+
+/* TITLE */
+
+.register-box h2{
+
+    text-align:center;
+
+    font-size:55px;
+
+    color:#6d28d9;
+
+    margin-bottom:10px;
+}
+
+/* LINE */
+
+.line{
+
+    width:90px;
+    height:4px;
+
+    background:#9333ea;
+
+    margin:auto;
+
+    border-radius:10px;
+
+    margin-bottom:35px;
+}
+
+/* ERROR */
+
+.error-msg{
+
+    background:#ffe5e5;
+
+    color:red;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    font-weight:bold;
+}
+
+/* INPUT BOX */
+
+.input-box{
+
+    margin-bottom:25px;
+}
+
+.input-box label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#222;
+}
+
+/* FIELD */
+
+.field{
+
+    position:relative;
+}
+
+.field i{
+
+    position:absolute;
+
+    left:16px;
+    top:20px;
+
+    color:#7e22ce;
+
+    font-size:18px;
+}
+
+/* INPUT */
+
+.field input{
+
+    width:100%;
+    height:60px;
+
+    border:2px solid #ddd6fe;
+
+    border-radius:12px;
+
+    padding-left:50px;
+    padding-right:50px;
+
+    font-size:18px;
+
+    outline:none;
+}
+
+/* EYE */
+
+.eye{
+
+    position:absolute;
+
+    right:16px;
+    top:18px;
+
+    cursor:pointer;
+
+    font-size:22px;
+}
+
+/* BUTTON */
+
+.create-btn{
+
+    width:100%;
+    height:60px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:linear-gradient(
+    135deg,
+    #7e22ce,
+    #9333ea
+    );
+
+    color:white;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-top:10px;
+}
+
+/* LOGIN */
+
+.login{
+
+    text-align:center;
+
+    margin-top:25px;
+
+    font-size:20px;
+}
+
+.login a{
+
+    color:#7e22ce;
+
+    text-decoration:none;
+
+    font-weight:bold;
+}
+
+</style>
 
 </head>
 
 <body>
 
-    <div class="register-box">
+<div class="register-box">
 
-        <h1>Create Account</h1>
+    <a href="/login/"
+    class="close">
 
-        <form method="POST">
+        ×
 
-            {% csrf_token %}
-            <h3 style="color:red;">{{ message }}</h3>
+    </a>
 
-            <input type="text" name="username" placeholder="Enter Username">
+    <h2>
 
-            <input type="email" name="email" placeholder="Enter Email">
+        Create Account
 
-            <input type="password" name="password" placeholder="Enter Password">
+    </h2>
 
-            <button type="submit">Register</button>
+    <div class="line"></div>
 
-        </form>
+    {% if message %}
 
-        <p>
-            Already have an account?
-            <a href="/login/">Login</a>
-        </p>
+    <div class="error-msg">
+
+        {{ message }}
 
     </div>
+
+    {% endif %}
+
+    <!-- FORM -->
+
+    <form action="/register/" method="POST">
+
+        {% csrf_token %}
+
+        <!-- USERNAME -->
+
+        <div class="input-box">
+
+            <label>Username</label>
+
+            <div class="field">
+
+                <i class="fa fa-user"></i>
+
+                <input type="text"
+                name="username"
+                placeholder="Enter username"
+                required>
+
+            </div>
+
+        </div>
+
+        <!-- EMAIL -->
+
+        <div class="input-box">
+
+            <label>Email</label>
+
+            <div class="field">
+
+                <i class="fa fa-envelope"></i>
+
+                <input type="email"
+                name="email"
+                placeholder="Enter email"
+                required>
+
+            </div>
+
+        </div>
+
+        <!-- PASSWORD -->
+
+        <div class="input-box">
+
+            <label>Create Password</label>
+
+            <div class="field">
+
+                <i class="fa fa-lock"></i>
+
+                <input type="password"
+                id="password"
+                name="password"
+                placeholder="Create password"
+                required>
+
+                <span class="eye"
+                onclick="togglePassword()">
+
+                    👁️
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- BUTTON -->
+
+        <button type="submit"
+        class="create-btn">
+
+            Create Account
+
+        </button>
+
+    </form>
+
+    <!-- LOGIN -->
+
+    <div class="login">
+
+        Already have an account?
+
+        <a href="/login/">
+
+            Login here
+
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+
+/* PASSWORD SHOW */
+
+function togglePassword(){
+
+    let input =
+    document.getElementById(
+    "password"
+    );
+
+    if(input.type==="password"){
+
+        input.type="text";
+
+    }else{
+
+        input.type="password";
+    }
+}
+
+</script>
 
 </body>
 </html>

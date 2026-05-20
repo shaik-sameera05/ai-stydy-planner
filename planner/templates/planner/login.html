@@ -1,101 +1,883 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
-    <title>Login</title>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    <style>
+<title>AI Study Planner</title>
 
-        body{
-            margin:0;
-            padding:0;
-            font-family: Arial;
-            background: linear-gradient(to right, #141e30, #243b55);
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-        }
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-        .login-box{
-            background:white;
-            padding:40px;
-            width:350px;
-            border-radius:15px;
-            box-shadow:0px 0px 20px rgba(0,0,0,0.3);
-            text-align:center;
-        }
+<style>
 
-        h1{
-            margin-bottom:30px;
-            color:#243b55;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
-        input{
-            width:100%;
-            padding:12px;
-            margin-top:15px;
-            border:1px solid #ccc;
-            border-radius:8px;
-            font-size:16px;
-        }
+body{
 
-        button{
-            width:100%;
-            padding:12px;
-            margin-top:25px;
-            border:none;
-            border-radius:8px;
-            background:#243b55;
-            color:white;
-            font-size:18px;
-            cursor:pointer;
-        }
+    height:100vh;
 
-        button:hover{
-            background:#141e30;
-        }
+    overflow:hidden;
 
-        a{
-            text-decoration:none;
-            color:blue;
-        }
+    display:flex;
 
-        p{
-            margin-top:20px;
-        }
+    background:#f3eefc;
+}
 
-    </style>
+/* LEFT SIDE */
+
+.left{
+
+    width:50%;
+
+    background:linear-gradient(
+    135deg,
+    #1e0033,
+    #4b0082,
+    #7b2cbf
+    );
+
+    color:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+/* SHAPES */
+
+.left::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:320px;
+    height:320px;
+
+    border:4px solid rgba(255,255,255,0.08);
+
+    border-radius:50%;
+
+    top:-120px;
+    left:-120px;
+}
+
+.left::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    border:4px solid rgba(255,255,255,0.08);
+
+    border-radius:50%;
+
+    bottom:-120px;
+    right:-120px;
+}
+
+.shape1{
+
+    position:absolute;
+
+    width:120px;
+    height:120px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.08);
+
+    top:40px;
+    right:80px;
+}
+
+.shape2{
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.08);
+
+    bottom:40px;
+    left:60px;
+}
+
+/* DOTS */
+
+.dots1{
+
+    position:absolute;
+
+    top:100px;
+    left:80px;
+
+    width:100px;
+    height:100px;
+
+    background-image:
+    radial-gradient(
+    white 2px,
+    transparent 2px
+    );
+
+    background-size:20px 20px;
+
+    opacity:0.4;
+}
+
+.dots2{
+
+    position:absolute;
+
+    bottom:100px;
+    right:80px;
+
+    width:100px;
+    height:100px;
+
+    background-image:
+    radial-gradient(
+    white 2px,
+    transparent 2px
+    );
+
+    background-size:20px 20px;
+
+    opacity:0.4;
+}
+
+/* LEFT CONTENT */
+
+.left i{
+
+    font-size:90px;
+
+    margin-bottom:20px;
+
+    z-index:2;
+}
+
+.left h1{
+
+    font-size:65px;
+
+    margin-bottom:20px;
+
+    z-index:2;
+}
+
+.left p{
+
+    font-size:25px;
+
+    line-height:42px;
+
+    z-index:2;
+}
+
+/* RIGHT SIDE */
+
+.right{
+
+    width:50%;
+
+    background:#f5f3ff;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+}
+
+/* LOGIN BOX */
+
+.login-box{
+
+    width:470px;
+
+    background:white;
+
+    padding:45px;
+
+    border-radius:22px;
+
+    box-shadow:
+    0 0 25px rgba(0,0,0,0.1);
+}
+
+/* TITLE */
+
+.login-box h2{
+
+    text-align:center;
+
+    font-size:60px;
+
+    color:#4b0082;
+
+    margin-bottom:10px;
+}
+
+/* LINE */
+
+.line{
+
+    width:90px;
+    height:4px;
+
+    background:#9333ea;
+
+    margin:auto;
+
+    border-radius:10px;
+
+    margin-bottom:35px;
+}
+
+/* ERROR */
+
+.error-msg{
+
+    background:#ffe5e5;
+
+    color:red;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    margin-bottom:15px;
+
+    text-align:center;
+
+    font-weight:bold;
+}
+
+/* INPUT BOX */
+
+.input-box{
+
+    margin-bottom:28px;
+}
+
+.input-box label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-size:23px;
+
+    font-weight:bold;
+
+    color:#222;
+}
+
+/* FIELD */
+
+.field{
+
+    position:relative;
+}
+
+.field i{
+
+    position:absolute;
+
+    left:16px;
+    top:20px;
+
+    color:#6b21a8;
+
+    font-size:18px;
+}
+
+/* INPUT */
+
+.field input{
+
+    width:100%;
+    height:62px;
+
+    border:2px solid #ddd6fe;
+
+    border-radius:12px;
+
+    padding-left:48px;
+    padding-right:50px;
+
+    font-size:18px;
+
+    outline:none;
+}
+
+/* EYE */
+
+.eye{
+
+    position:absolute;
+
+    right:16px;
+    top:18px;
+
+    cursor:pointer;
+
+    font-size:22px;
+}
+
+/* BUTTON */
+
+.login-btn{
+
+    width:100%;
+    height:62px;
+
+    background:linear-gradient(
+    135deg,
+    #7e22ce,
+    #9333ea
+    );
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:25px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+/* OR */
+
+.or{
+
+    text-align:center;
+
+    margin:25px 0;
+
+    font-size:22px;
+
+    color:#666;
+}
+
+/* BOTTOM */
+
+.bottom{
+
+    text-align:center;
+}
+
+.forgot{
+
+    color:#7e22ce;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:20px;
+}
+
+.register{
+
+    margin-top:20px;
+
+    font-size:21px;
+
+    position:relative;
+
+    z-index:9999;
+}
+
+.register-btn{
+
+    color:#9333ea;
+
+    font-size:21px;
+
+    font-weight:bold;
+
+    text-decoration:none;
+
+    margin-left:5px;
+
+    position:relative;
+
+    z-index:9999;
+
+    cursor:pointer;
+}
+
+/* POPUP */
+
+.popup{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.5);
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:999;
+}
+
+.popup-box{
+
+    width:430px;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    position:relative;
+
+    animation:popup 0.3s ease;
+}
+
+@keyframes popup{
+
+    from{
+        transform:scale(0.7);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* CLOSE */
+
+.close{
+
+    position:absolute;
+
+    right:20px;
+    top:15px;
+
+    font-size:30px;
+
+    cursor:pointer;
+}
+
+/* POPUP TITLE */
+
+.popup-box h2{
+
+    text-align:center;
+
+    color:#6d28d9;
+
+    margin-bottom:8px;
+}
+
+.sub{
+
+    text-align:center;
+
+    color:gray;
+
+    margin-bottom:25px;
+}
+
+/* BUTTONS */
+
+.btns{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:20px;
+}
+
+.cancel-btn{
+
+    flex:1;
+
+    height:50px;
+
+    border:none;
+
+    background:#ddd;
+
+    border-radius:10px;
+
+    font-size:18px;
+
+    cursor:pointer;
+}
+
+.update-btn{
+
+    flex:1;
+
+    height:50px;
+
+    border:none;
+
+    background:#7e22ce;
+
+    color:white;
+
+    border-radius:10px;
+
+    font-size:18px;
+
+    cursor:pointer;
+}
+
+</style>
 
 </head>
 
 <body>
 
+<!-- LEFT -->
+
+<div class="left">
+
+    <div class="shape1"></div>
+
+    <div class="shape2"></div>
+
+    <div class="dots1"></div>
+
+    <div class="dots2"></div>
+
+    <i class="fa-solid fa-graduation-cap"></i>
+
+    <h1>
+
+        AI STUDY
+        PLANNER
+
+    </h1>
+
+    <p>
+
+        Smart Planning,
+        Better Learning
+
+        <br><br>
+
+        Generate personalized study plans,
+        track your progress and
+        achieve your goals.
+
+    </p>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="right">
+
     <div class="login-box">
 
-        <h1>Login</h1>
+        <h2>Login</h2>
 
-        <form method="POST">
+        <div class="line"></div>
+
+        {% if message %}
+
+        <div class="error-msg">
+
+            {{ message }}
+
+        </div>
+
+        {% endif %}
+
+        <form action="/login/" method="POST">
 
             {% csrf_token %}
 
-            <input type="text" name="username" placeholder="Enter Username">
+            <!-- USERNAME -->
 
-            <input type="password" name="password" placeholder="Enter Password">
+            <div class="input-box">
 
-            <button type="submit">Login</button>
-            <p>
-    <a href="/forgot/">Forgot Password?</a>
-</p>
+                <label>Username</label>
+
+                <div class="field">
+
+                    <i class="fa fa-user"></i>
+
+                    <input type="text"
+                    name="username"
+                    placeholder="Enter username"
+                    required>
+
+                </div>
+
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div class="input-box">
+
+                <label>Password</label>
+
+                <div class="field">
+
+                    <i class="fa fa-lock"></i>
+
+                    <input type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter password"
+                    required>
+
+                    <span class="eye"
+                    onclick="togglePassword()">
+
+                        👁️
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- BUTTON -->
+
+            <button type="submit"
+            class="login-btn">
+
+                Login
+
+            </button>
 
         </form>
 
-        <p>
-            Don't have an account?
-            <a href="/register/">Register</a>
-        </p>
+        <!-- OR -->
+
+        <div class="or">
+
+            OR
+
+        </div>
+
+        <!-- LINKS -->
+
+        <div class="bottom">
+
+            <p class="forgot"
+            onclick="openForgot()">
+
+                Forgot password?
+
+            </p>
+
+            <div class="register">
+
+                Don’t have an account?
+
+                <a href="/register/"
+                class="register-btn">
+
+                    Register here
+
+                </a>
+
+            </div>
+
+        </div>
 
     </div>
+
+</div>
+
+<!-- FORGOT PASSWORD POPUP -->
+
+<div id="forgotPopup" class="popup">
+
+    <div class="popup-box">
+
+        <span class="close"
+        onclick="closeForgot()">
+
+            ×
+
+        </span>
+
+        <h2>Forgot Password</h2>
+
+        <p class="sub">
+
+            Reset your password here
+
+        </p>
+
+        <form action="/forgot/" method="POST">
+
+            {% csrf_token %}
+
+            <!-- USERNAME -->
+
+            <div class="input-box">
+
+                <label>Username</label>
+
+                <div class="field">
+
+                    <i class="fa fa-user"></i>
+
+                    <input type="text"
+                    name="username"
+                    placeholder="Enter username"
+                    required>
+
+                </div>
+
+            </div>
+
+            <!-- NEW PASSWORD -->
+
+            <div class="input-box">
+
+                <label>New Password</label>
+
+                <div class="field">
+
+                    <i class="fa fa-lock"></i>
+
+                    <input type="password"
+                    name="new_password"
+                    placeholder="Enter new password"
+                    required>
+
+                </div>
+
+            </div>
+
+            <!-- CONFIRM PASSWORD -->
+
+            <div class="input-box">
+
+                <label>Confirm Password</label>
+
+                <div class="field">
+
+                    <i class="fa fa-lock"></i>
+
+                    <input type="password"
+                    placeholder="Confirm password"
+                    required>
+
+                </div>
+
+            </div>
+
+            <!-- BUTTONS -->
+
+            <div class="btns">
+
+                <button type="button"
+                class="cancel-btn"
+                onclick="closeForgot()">
+
+                    Cancel
+
+                </button>
+
+                <button type="submit"
+                class="update-btn">
+
+                    Update Password
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+
+function togglePassword(){
+
+    let input =
+    document.getElementById(
+    "password"
+    );
+
+    if(input.type==="password"){
+
+        input.type="text";
+
+    }else{
+
+        input.type="password";
+    }
+}
+
+/* OPEN POPUP */
+
+function openForgot(){
+
+    document.getElementById(
+    "forgotPopup"
+    ).style.display = "flex";
+}
+
+/* CLOSE POPUP */
+
+function closeForgot(){
+
+    document.getElementById(
+    "forgotPopup"
+    ).style.display = "none";
+}
+
+</script>
 
 </body>
 </html>

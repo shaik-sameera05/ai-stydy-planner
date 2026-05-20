@@ -1,157 +1,724 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
-    <title>Forgot Password</title>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    <style>
+<title>Forgot Password</title>
 
-        body{
-            margin:0;
-            padding:0;
-            font-family:Arial;
-            background: linear-gradient(to right, #8360c3, #2ebf91);
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-        }
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-        .box{
-            background:white;
-            padding:40px;
-            width:350px;
-            border-radius:15px;
-            text-align:center;
-            box-shadow:0px 0px 20px rgba(0,0,0,0.3);
-        }
+<style>
 
-        h1{
-            margin-bottom:20px;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
-        input{
-            width:100%;
-            padding:12px;
-            margin-top:15px;
-            border-radius:8px;
-            border:1px solid #ccc;
-            font-size:16px;
-        }
+body{
 
-        button{
-            width:100%;
-            padding:12px;
-            margin-top:20px;
-            border:none;
-            background:#2ebf91;
-            color:white;
-            border-radius:8px;
-            font-size:18px;
-            cursor:pointer;
-        }
+    height:100vh;
 
-        button:hover{
-            background:#249b76;
-        }
+    overflow:hidden;
 
-        .password-box{
-            position:relative;
-        }
+    display:flex;
+}
 
-        .eye{
-            position:absolute;
-            right:15px;
-            top:28px;
-            cursor:pointer;
-            font-size:18px;
-        }
+/* LEFT SIDE */
 
-    </style>
+.left{
 
+    width:50%;
+
+    background:linear-gradient(
+    135deg,
+    #140021,
+    #3b0070,
+    #7b2cbf
+    );
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    flex-direction:column;
+
+    color:white;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+/* CIRCLES */
+
+.left::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    border:3px solid rgba(255,255,255,0.08);
+
+    border-radius:50%;
+
+    top:-120px;
+    left:-120px;
+}
+
+.left::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+    height:250px;
+
+    border:3px solid rgba(255,255,255,0.08);
+
+    border-radius:50%;
+
+    bottom:-100px;
+    right:-100px;
+}
+
+/* SHAPES */
+
+.shape1{
+
+    position:absolute;
+
+    width:120px;
+    height:120px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.07);
+
+    top:60px;
+    right:80px;
+}
+
+.shape2{
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.07);
+
+    bottom:50px;
+    left:60px;
+}
+
+/* DOTS */
+
+.dots1{
+
+    position:absolute;
+
+    width:90px;
+    height:90px;
+
+    top:100px;
+    left:80px;
+
+    background-image:
+    radial-gradient(
+    white 2px,
+    transparent 2px
+    );
+
+    background-size:18px 18px;
+
+    opacity:0.3;
+}
+
+.dots2{
+
+    position:absolute;
+
+    width:90px;
+    height:90px;
+
+    bottom:100px;
+    right:80px;
+
+    background-image:
+    radial-gradient(
+    white 2px,
+    transparent 2px
+    );
+
+    background-size:18px 18px;
+
+    opacity:0.3;
+}
+
+/* LEFT CONTENT */
+
+.left i{
+
+    font-size:90px;
+
+    margin-bottom:20px;
+
+    z-index:2;
+}
+
+.left h1{
+
+    font-size:60px;
+
+    margin-bottom:20px;
+
+    z-index:2;
+}
+
+.left p{
+
+    width:70%;
+
+    font-size:25px;
+
+    line-height:40px;
+
+    z-index:2;
+}
+
+/* RIGHT */
+
+.right{
+
+    width:50%;
+
+    background:#f5f3ff;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+}
+
+/* FORGOT BOX */
+
+.forgot-box{
+
+    width:500px;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:40px;
+
+    box-shadow:
+    0 0 25px rgba(0,0,0,0.1);
+
+    position:relative;
+}
+
+/* CLOSE */
+
+.close{
+
+    position:absolute;
+
+    top:18px;
+    right:22px;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    color:#555;
+}
+
+/* ICON */
+
+.top-icon{
+
+    text-align:center;
+
+    margin-bottom:15px;
+}
+
+.top-icon i{
+
+    font-size:80px;
+
+    color:#7b2cbf;
+}
+
+/* TITLE */
+
+.forgot-box h2{
+
+    text-align:center;
+
+    font-size:52px;
+
+    color:#5b21b6;
+}
+
+.sub{
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:20px;
+
+    margin-top:8px;
+
+    margin-bottom:35px;
+}
+
+/* INPUT BOX */
+
+.input-box{
+
+    margin-bottom:25px;
+}
+
+.input-box label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-size:24px;
+
+    font-weight:bold;
+}
+
+.field{
+
+    position:relative;
+}
+
+.field i{
+
+    position:absolute;
+
+    left:15px;
+    top:20px;
+
+    color:#7b2cbf;
+}
+
+.field input{
+
+    width:100%;
+    height:60px;
+
+    border:2px solid #ddd6fe;
+
+    border-radius:12px;
+
+    padding-left:50px;
+    padding-right:50px;
+
+    font-size:18px;
+
+    outline:none;
+}
+
+.field input:focus{
+
+    border-color:#7b2cbf;
+}
+
+/* EYE */
+
+.eye{
+
+    position:absolute;
+
+    right:18px;
+    top:18px;
+
+    cursor:pointer;
+
+    font-size:20px;
+}
+
+/* BUTTONS */
+
+.btns{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:15px;
+}
+
+/* CANCEL */
+
+.cancel-btn{
+
+    width:50%;
+    height:58px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#dbe4f0;
+
+    color:#444;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+/* UPDATE */
+
+.update-btn{
+
+    width:50%;
+    height:58px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:linear-gradient(
+    135deg,
+    #6d28d9,
+    #9333ea
+    );
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+/* SUCCESS */
+
+.success{
+
+    margin-top:20px;
+
+    text-align:center;
+
+    color:#6d28d9;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    display:none;
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="box">
+<!-- LEFT -->
 
-    <h1>Forgot Password</h1>
+<div class="left">
 
-    <form method="POST">
+    <div class="shape1"></div>
 
-        {% csrf_token %}
+    <div class="shape2"></div>
 
-        <h3 style="color:red;">{{ message }}</h3>
+    <div class="dots1"></div>
 
-        <input type="text"
-        name="username"
-        placeholder="Enter Username">
+    <div class="dots2"></div>
 
-        <div class="password-box">
+    <i class="fa-solid fa-graduation-cap"></i>
 
-            <input type="password"
-            id="password"
-            name="new_password"
-            placeholder="New Password">
+    <h1>
 
-            <span class="eye"
-            onclick="togglePassword()">
-            👁️
-            </span>
+        AI STUDY
+        PLANNER
+
+    </h1>
+
+    <p>
+
+        Smart Planning,
+        Better Learning
+
+        <br><br>
+
+        Generate personalized study plans,
+        track your progress and
+        achieve your goals.
+
+    </p>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="right">
+
+    <div class="forgot-box">
+
+        <!-- CLOSE -->
+
+        <span class="close"
+        onclick="closePage()">
+
+            ×
+
+        </span>
+
+        <!-- ICON -->
+
+        <div class="top-icon">
+
+            <i class="fa-solid fa-envelope-open-text"></i>
 
         </div>
 
-        <div class="password-box">
+        <!-- TITLE -->
 
-            <input type="password"
-            id="confirm_password"
-            placeholder="Confirm Password">
+        <h2>
 
-            <span class="eye"
-            onclick="toggleConfirmPassword()">
-            👁️
-            </span>
+            Forgot Password
+
+        </h2>
+
+        <p class="sub">
+
+            Reset your password here
+
+        </p>
+
+        <!-- USERNAME -->
+
+        <div class="input-box">
+
+            <label>Username</label>
+
+            <div class="field">
+
+                <i class="fa fa-user"></i>
+
+                <input type="text"
+                id="username"
+                placeholder="Enter username">
+
+            </div>
 
         </div>
 
-        <button type="submit">
-            Update Password
-        </button>
+        <!-- NEW PASSWORD -->
 
-    </form>
+        <div class="input-box">
+
+            <label>New Password</label>
+
+            <div class="field">
+
+                <i class="fa fa-lock"></i>
+
+                <input type="password"
+                id="newPassword"
+                placeholder="Enter new password">
+
+                <span class="eye"
+                onclick="toggleNew()">
+
+                    👁️
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- CONFIRM -->
+
+        <div class="input-box">
+
+            <label>Confirm Password</label>
+
+            <div class="field">
+
+                <i class="fa fa-lock"></i>
+
+                <input type="password"
+                id="confirmPassword"
+                placeholder="Confirm password">
+
+                <span class="eye"
+                onclick="toggleConfirm()">
+
+                    👁️
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- BUTTONS -->
+
+        <div class="btns">
+
+            <button class="cancel-btn"
+            onclick="cancelForm()">
+
+                Cancel
+
+            </button>
+
+            <button class="update-btn"
+            onclick="updatePassword()">
+
+                Update Password
+
+            </button>
+
+        </div>
+
+        <!-- SUCCESS -->
+
+        <div class="success"
+        id="successMsg">
+
+            Password Updated Successfully 💜
+
+        </div>
+
+    </div>
 
 </div>
 
 <script>
 
-function togglePassword(){
+/* SHOW NEW PASSWORD */
 
-    var x =
-    document.getElementById("password");
+function toggleNew(){
 
-    if(x.type === "password"){
+    let x =
+    document.getElementById(
+    "newPassword"
+    );
 
-        x.type = "text";
+    if(x.type==="password"){
+
+        x.type="text";
 
     }else{
 
-        x.type = "password";
+        x.type="password";
     }
 }
 
-function toggleConfirmPassword(){
+/* SHOW CONFIRM PASSWORD */
 
-    var x =
-    document.getElementById("confirm_password");
+function toggleConfirm(){
 
-    if(x.type === "password"){
+    let x =
+    document.getElementById(
+    "confirmPassword"
+    );
 
-        x.type = "text";
+    if(x.type==="password"){
+
+        x.type="text";
 
     }else{
 
-        x.type = "password";
+        x.type="password";
     }
+}
+
+/* CANCEL */
+
+function cancelForm(){
+
+    document.getElementById(
+    "username"
+    ).value="";
+
+    document.getElementById(
+    "newPassword"
+    ).value="";
+
+    document.getElementById(
+    "confirmPassword"
+    ).value="";
+
+    document.getElementById(
+    "successMsg"
+    ).style.display="none";
+}
+
+/* UPDATE PASSWORD */
+
+function updatePassword(){
+
+    let pass1 =
+    document.getElementById(
+    "newPassword"
+    ).value;
+
+    let pass2 =
+    document.getElementById(
+    "confirmPassword"
+    ).value;
+
+    if(pass1==="" || pass2===""){
+
+        alert(
+        "Please fill all fields"
+        );
+
+        return;
+    }
+
+    if(pass1!==pass2){
+
+        alert(
+        "Passwords do not match"
+        );
+
+        return;
+    }
+
+    document.getElementById(
+    "successMsg"
+    ).style.display="block";
+}
+
+/* CLOSE */
+
+function closePage(){
+
+    window.location.href=
+    "/login/";
 }
 
 </script>

@@ -1,12 +1,20 @@
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
 from .models import StudyPlan
 
 
-def home(request):
-    return render(request, 'planner/home.html')
+# HOME
 
+def home(request):
+
+    return render(
+        request,
+        'planner/home.html'
+    )
+
+
+# REGISTER
 
 def register_view(request):
 
@@ -14,11 +22,13 @@ def register_view(request):
 
     if request.method == "POST":
 
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
 
-        if User.objects.filter(username=username).exists():
+        if User.objects.filter(
+            username=username
+        ).exists():
 
             message = "Username already exists"
 
@@ -34,8 +44,14 @@ def register_view(request):
 
             return redirect('/login/')
 
-    return render(request, 'planner/register.html', {'message': message})
+    return render(
+        request,
+        'planner/register.html',
+        {'message': message}
+    )
 
+
+# LOGIN
 
 def login_view(request):
 
@@ -43,8 +59,8 @@ def login_view(request):
 
     if request.method == "POST":
 
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
         user = authenticate(
             request,
@@ -62,84 +78,60 @@ def login_view(request):
 
             message = "Invalid Username or Password"
 
-    return render(request, 'planner/login.html', {'message': message})
+    return render(
+        request,
+        'planner/login.html',
+        {'message': message}
+    )
 
+
+# DASHBOARD
 
 def dashboard(request):
 
-    plan = ""
-    message = ""
-
-    if request.method == "POST":
-
-        subject = request.POST['subject']
-        exam_date = request.POST['exam_date']
-        study_hours = request.POST['study_hours']
-
-        if subject == "" or exam_date == "" or study_hours == "":
-
-            message = "Please fill all fields"
-
-        else:
-
-            plan = f"""
-
-Study Plan for {subject}
-
-Morning:
-Study for {study_hours} hours
-
-Afternoon:
-Practice important questions
-
-Evening:
-Revision and mock tests
-
-Before Exam:
-Complete full revision
-
-"""
-
-            StudyPlan.objects.create(
-                subject=subject,
-                exam_date=exam_date,
-                study_hours=study_hours,
-                generated_plan=plan
-            )
-
     return render(
         request,
-        'planner/dashboard.html',
-        {
-            'plan': plan,
-            'message': message
-        }
+        'planner/dashboard.html'
     )
+
+
+# FORGOT PASSWORD
+
 def forgot_password(request):
 
     message = ""
 
     if request.method == "POST":
 
-        username = request.POST['username']
-        new_password = request.POST['new_password']
+        username = request.POST.get('username')
+        new_password = request.POST.get('new_password')
 
         try:
 
-            user = User.objects.get(username=username)
+            user = User.objects.get(
+                username=username
+            )
 
-            user.set_password(new_password)
+            user.set_password(
+                new_password
+            )
 
             user.save()
 
             message = "Password Updated Successfully"
+            return redirect('/login/')
 
         except:
 
             message = "Username Not Found"
 
-    return render(
-        request,
-        'planner/forgot.html',
-        {'message': message}
-    )
+    return redirect('/login/')
+
+
+# LOGOUT
+
+def logout_view(request):
+
+    logout(request)
+
+    return redirect('/login/')
