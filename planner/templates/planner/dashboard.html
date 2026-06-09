@@ -139,12 +139,16 @@ body{
 
 .profile{
 
-    width:60px;
-    height:60px;
+    width:65px;
+    height:65px;
 
     border-radius:50%;
 
-    background:#6c2bd9;
+    background:linear-gradient(
+    135deg,
+    #6c2bd9,
+    #9333ea
+    );
 
     display:flex;
 
@@ -153,7 +157,11 @@ body{
 
     color:white;
 
-    font-size:24px;
+    font-size:26px;
+
+    cursor:pointer;
+
+    box-shadow:0 5px 15px rgba(108,43,217,0.3);
 }
 
 /* BOX */
@@ -338,6 +346,73 @@ table td{
 
     background:#ef4444;
 }
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.card h3{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.card h2{
+    color:#6c2bd9;
+    font-size:30px;
+}
+.profile-container{
+    position:relative;
+}
+
+.dropdown{
+
+    display:none;
+
+    position:absolute;
+
+    top:75px;
+    right:0;
+
+    width:180px;
+
+    background:white;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.15);
+
+    overflow:hidden;
+
+    z-index:1000;
+}
+
+.dropdown a{
+
+    display:block;
+
+    padding:15px;
+
+    text-decoration:none;
+
+    color:#333;
+
+    transition:0.3s;
+}
+
+.dropdown a:hover{
+
+    background:#f3eefc;
+}
 
 </style>
 
@@ -407,27 +482,74 @@ table td{
 <!-- MAIN -->
 
 <div class="main">
+<div class="top">
 
-    <div class="top">
+    <div>
 
         <h1>
-
-            Welcome Back 👋
-
+            Welcome Back, Sameera 👋
         </h1>
 
-        <div class="profile">
-
-            S
-
-        </div>
+        <p style="color:#666;margin-top:10px;font-size:18px;">
+            Stay consistent and achieve your study goals.
+        </p>
 
     </div>
 
-    <!-- DASHBOARD -->
+    <div class="profile-container">
 
-    <div class="box"
-    id="dashboard">
+    <div class="profile" onclick="toggleMenu()">
+
+        <i class="fa fa-user"></i>
+
+    </div>
+
+    <div class="dropdown" id="dropdown">
+
+        <a href="/login/">
+            🚪 Logout
+        </a>
+
+    </div>
+
+</div>
+
+</div>
+
+<!-- STATS -->
+
+<div class="stats">
+
+    <div class="card">
+        <h3>📚</h3>
+        <h2 id="subjectCount">0</h2>
+        <p>Total Subjects</p>
+    </div>
+
+    <div class="card">
+        <h3>⏰</h3>
+        <h2 id="hoursCount">0</h2>
+        <p>Study Hours</p>
+    </div>
+
+    <div class="card">
+        <h3>🎯</h3>
+        <h2 id="goalCount">0</h2>
+        <p>Goals</p>
+    </div>
+
+    <div class="card">
+        <h3>📈</h3>
+        <h2 id="progressCard">0%</h2>
+        <p>Progress</p>
+    </div>
+
+</div>
+
+<!-- DASHBOARD -->
+
+<div class="box"
+id="dashboard">
 
         <h2>
 
@@ -552,7 +674,7 @@ table td{
 
         <h2>
 
-            Weekly Timetable
+             Timetable
 
         </h2>
 
@@ -747,6 +869,25 @@ function generatePlan(){
     "progressText"
     ).innerHTML =
     progress + "% Completed";
+    document.getElementById(
+"subjectCount"
+).innerHTML =
+totalSubjects;
+
+document.getElementById(
+"hoursCount"
+).innerHTML =
+hours;
+
+document.getElementById(
+"goalCount"
+).innerHTML =
+totalSubjects;
+
+document.getElementById(
+"progressCard"
+).innerHTML =
+progress + "%";
 
     /* TIMETABLE */
 
@@ -847,6 +988,22 @@ function editRow(button){
 
     row.cells[2].innerHTML =
     goal;
+}
+function toggleMenu(){
+
+    let menu =
+    document.getElementById(
+    "dropdown"
+    );
+
+    if(menu.style.display==="block"){
+
+        menu.style.display="none";
+
+    }else{
+
+        menu.style.display="block";
+    }
 }
 
 </script>
