@@ -1,135 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>AI Study Planner</title>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial;
-}
-
-body{
-
-    height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    background:linear-gradient(
-    135deg,
-    #1e0033,
-    #4b0082,
-    #7b2cbf
-    );
-
-    color:white;
-
-    overflow:hidden;
-}
-
-.container{
-
-    text-align:center;
-}
-
-.container i{
-
-    font-size:100px;
-
-    margin-bottom:25px;
-}
-
-.container h1{
-
-    font-size:70px;
-
-    margin-bottom:20px;
-}
-
-.container p{
-
-    font-size:25px;
-
-    line-height:40px;
-
-    margin-bottom:40px;
-}
-
-.btn{
-
-    padding:18px 40px;
-
-    background:white;
-
-    color:#6d28d9;
-
-    text-decoration:none;
-
-    font-size:22px;
-
-    border-radius:12px;
-
-    font-weight:bold;
-
-    transition:0.3s;
-}
-
-.btn:hover{
-
-    background:#ddd;
-}
-
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Study Planner</title>
+  <link rel="stylesheet" href="{% static 'planner.css' %}">
 </head>
-
-<body>
-
-<div class="container">
-
-    <i class="fa-solid fa-graduation-cap"></i>
-
-    <h1>
-
-        AI STUDY PLANNER
-
-    </h1>
-
-    <p>
-
-        Smart Planning,
-        Better Learning
-
-        <br><br>
-
-        Track progress,
-        manage study plans,
-        and achieve your goals.
-
-    </p>
-
-    <a href="/login/"
-    class="btn">
-
-        Get Started
-
-    </a>
-
-</div>
-
+<body class="login-wrap">
+  <div class="card" style="text-align:center;">
+    <h1>AI Study Planner</h1>
+    <p class="large">Plan smarter. Learn faster. Adapt with every result.</p>
+    <div class="inline-row" style="justify-content:center; margin-top:20px;">
+      <a class="btn" href="{% url 'login' %}">Login</a>
+      <a class="btn secondary" href="{% url 'register' %}">Create Account</a>
+    </div>
+  </div>
 </body>
 </html>

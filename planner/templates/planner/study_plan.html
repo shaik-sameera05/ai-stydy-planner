@@ -1,0 +1,7 @@
+{% extends "planner/base.html" %}
+{% load planner_tags %}
+{% block content %}
+<h1>Study Plan</h1>
+<div class="panel" style="margin-top:20px;"><h3>Generate AI study plan</h3><form method="post" action="{% url 'generate_plan' %}" class="form-grid">{% csrf_token %}<div class="field"><label>Plan title</label><input type="text" name="title" value="AI Study Plan" /></div><div class="field"><label>Start date</label><input type="date" name="start_date" required /></div><div class="field"><label>End date</label><input type="date" name="end_date" required /></div><div class="field"><label>Total hours</label><input type="number" name="total_hours" min="1" required /></div><button class="btn" type="submit">Generate plan</button></form></div>
+<div class="panel" style="margin-top:20px;"><h3>Saved plans</h3>{% if plans %}{% for plan in plans %}<div style="margin-bottom:24px;"><h4>{{ plan.title }}</h4><p>{{ plan.start_date }} to {{ plan.end_date }} — {{ plan.total_hours }} total hours</p><table class="table"><tr><th>Date</th><th>Subject</th><th>Topic</th><th>Duration</th><th>Priority</th><th>Status</th></tr>{% for task in tasks_by_plan|get_item:plan.id %}<tr><td>{{ task.date }}</td><td>{{ task.subject.name }}</td><td>{{ task.topic.name|default:"General" }}</td><td>{{ task.duration }} min</td><td>{{ task.priority }}</td><td>{{ task.status }}</td></tr>{% endfor %}</table></div>{% endfor %}{% else %}<p>No study plan generated yet.</p>{% endif %}</div>
+{% endblock %}
