@@ -1,0 +1,5 @@
+{% extends "planner/base.html" %}
+{% block content %}
+<h1>{{ quiz.title }}</h1>
+<form method="post" class="form-grid">{% csrf_token %}{% for question in quiz.questions %}<div class="panel"><p><strong>{{ forloop.counter }}. {{ question.question }}</strong></p>{% for choice in question.choices %}<label style="display:block; margin:6px 0;"><input type="radio" name="answer_{{ forloop.parentloop.counter0 }}" value="{{ forloop.counter0 }}" required />{{ choice }}</label>{% endfor %}</div>{% endfor %}<button class="btn" type="submit">Submit quiz</button></form>
+{% endblock %}

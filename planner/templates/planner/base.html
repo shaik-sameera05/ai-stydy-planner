@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Study Planner</title>
+  <link rel="stylesheet" href="{% static 'planner.css' %}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <h2>Planner</h2>
+      <nav class="nav">
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+        <a href="{% url 'profile' %}">Profile</a>
+        <a href="{% url 'subjects' %}">Subjects</a>
+        <a href="{% url 'topics' %}">Topics</a>
+        <a href="{% url 'study_plan' %}">Study Plan</a>
+        <a href="{% url 'progress' %}">Progress</a>
+        <a href="{% url 'quizzes' %}">Quizzes</a>
+        <a href="{% url 'ai_assistant' %}">AI Assistant</a>
+        <a href="{% url 'logout' %}">Logout</a>
+      </nav>
+    </aside>
+    <main class="main">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</body>
+</html>

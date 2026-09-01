@@ -1,0 +1,5 @@
+{% extends "planner/base.html" %}
+{% block content %}
+<h1>Student Profile</h1>
+<form method="post" class="form-grid" style="margin-top:16px;">{% csrf_token %}{{ form.as_p }}<button class="btn" type="submit">Save profile</button></form>
+{% endblock %}
